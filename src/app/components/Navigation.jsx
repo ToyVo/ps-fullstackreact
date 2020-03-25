@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import React from 'react';
 
-const Navigation = () => (
+const _Navigation = () => (
 	<div>
 		<Link to='/dashboard'>
 			<h1>My Application</h1>
@@ -10,4 +10,4 @@ const Navigation = () => (
 	</div>
 );
 
-export const ConnectedNavigation = connect(state => state)(Navigation);
+export const Navigation = connect(state => state)(_Navigation);
