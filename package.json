@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "initalize": "babel-node src/server/initalize-db",
+    "server": "babel-node src/server/server",
+    "server-test": "babel-node src/server/server.spec"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.0",
     "@babel/register": "^7.9.0",
+    "@types/express": "^4.17.3",
     "@types/history": "^4.7.5",
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
@@ -51,7 +55,7 @@
     "express": "^4.16.3",
     "history": "^4.7.2",
     "md5": "^2.2.1",
-    "mongodb": "^3.1.8",
+    "mongodb": "^3.1.10",
     "react": "^16.4.2",
     "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
