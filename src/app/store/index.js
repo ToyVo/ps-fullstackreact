@@ -55,6 +55,17 @@ export const store = createStore(
 			return tasks;
 		},
 		comments(comments = [], action) {
+			switch(action.type) {
+				case mutations.SET_STATE:
+					return action.state.comments;
+				case mutations.CREATE_COMMENT:
+					return [...comments, {
+						owner: action.ownerID,
+						id: action.commentID,
+						task: action.taskID,
+						content: action.content
+					}]
+			}
 			return comments;
 		},
 		groups(groups = [], action) {
@@ -65,6 +76,10 @@ export const store = createStore(
 			return groups;
 		},
 		users(users = [], action) {
+			switch(action.type) {
+				case mutations.SET_STATE:
+					return action.state.users;
+			}
 			return users;
 		}
 	}),

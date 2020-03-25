@@ -25,6 +25,24 @@ export function* taskCreationSaga() {
 	}
 }
 
+export function* commentCreationSaga() {
+	while(true) {
+		const {taskID, content} = yield take(mutations.REQUEST_COMMENT_CREATION);
+		const ownerID = 'U1';
+		const commentID = uuid();
+		let mutation = mutations.createComment(commentID, taskID, ownerID, content);
+		yield axios.post(`${url}/comment/new`, {
+			comment: {
+				id: commentID,
+				owner: ownerID,
+				task: taskID,
+				content
+			}
+		});
+		yield put(mutation);
+	}
+}
+
 export function* taskModificationSaga() {
 	while(true) {
 		const task = yield take([
