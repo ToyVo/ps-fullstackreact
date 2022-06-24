@@ -10,4 +10,6 @@ const _Navigation = () => (
 	</div>
 );
 
-export const Navigation = connect(state => state)(_Navigation);
+const mapStateToProps = state => state;
+
+export const Navigation = connect(mapStateToProps)(_Navigation);

@@ -2,8 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import {connectDB} from './connect-db';
+import './initalize-db'
+import {authenticationRoute} from './authenticate';
+import path from 'path';
 
-let port = 7777;
+let port = process.env.PORT || 8888;
 let app = express();
 
 app.use(cors(), bodyParser.urlencoded({extended: true}), bodyParser.json());
@@ -26,13 +29,22 @@ export const updateTask = async task => {
 		await collection.updateOne({id}, {$set: {name}});
 };
 
-app.post('/tast/new', async(req, res) => {
+authenticationRoute(app);
+
+if(process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.resolve(__dirname, '../../dist')));
+	app.get('/*', (req, res) => {
+		res.sendFile(path.resolve('index.html'));
+	})
+}
+
+app.post('/task/new', async(req, res) => {
 	let task = req.body.task;
 	await addNewTask(task);
 	res.status(200).send();
 });
 
-app.post('/tast/update', async(req, res) => {
+app.post('/task/update', async(req, res) => {
 	let task = req.body.task;
 	await updateTask(task);
 	res.status(200).send();

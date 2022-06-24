@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
+    "build": "webpack -p",
+    "start": "npm run server",
     "dev": "webpack-dev-server",
     "initalize": "babel-node src/server/initalize-db",
     "server": "babel-node src/server/server",
-    "server-test": "babel-node src/server/server.spec"
+    "server-test": "babel-node src/server/server.spec",
+    "start-dev": "concurrently \"npm run server\" \"npm run dev\""
   },
   "repository": {
     "type": "git",
