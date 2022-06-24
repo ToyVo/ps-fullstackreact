@@ -11,10 +11,10 @@ export const Dashboard = ({groups}) => (
 	</div>
 );
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
 	return {
 		groups: state.groups
 	}
-}
+};
 
 export const ConnectedDashboard = connect(mapStateToProps)(Dashboard);
