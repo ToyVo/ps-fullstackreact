@@ -17,7 +17,7 @@
     "url": "git+https://github.com/ToyVo/ps-fullstackreact.git"
   },
   "author": "Collin Diekvoss <cdiekvoss@gmail.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ToyVo/ps-fullstackreact/issues"
   },
